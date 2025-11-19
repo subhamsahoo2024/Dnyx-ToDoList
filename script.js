@@ -131,8 +131,16 @@ function renderTasks() {
 document.querySelectorAll(".filter-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     currentFilter = btn.dataset.filter;
+    document.querySelectorAll(".filter-btn").forEach(b => {
+      b.classList.remove("bg-blue-400", "hover:bg-blue-600");
+      b.classList.add("bg-gray-700", "hover:bg-gray-600");
+    });
+
+    btn.classList.remove("bg-gray-700", "hover:bg-gray-600");
+    btn.classList.add("bg-blue-400", "hover:bg-blue-600");
     renderTasks();
   });
 });
 
 renderTasks();
+
