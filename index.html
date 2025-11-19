@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="bg-gray-900 min-h-screen flex items-center justify-center text-white"
+  >
+    <div class="w-full max-w-md bg-gray-800 p-6 rounded-xl shadow-lg my-10">
+      <h1 class="text-3xl font-bold mb-5 text-center">📝 To-Do List</h1>
+
+      <div class="flex mb-4">
+        <input
+          id="taskInput"
+          type="text"
+          class="w-full border border-gray-600 bg-gray-700 text-white p-2 rounded-lg"
+          placeholder="Enter a task"
+        />
+        <button
+          onclick="addTask()"
+          class="ml-2 bg-blue-600 hover:bg-blue-800 px-4 py-2 rounded-lg"
+        >
+          Add
+        </button>
+      </div>
+
+      <!-- Search -->
+      <input
+        id="searchInput"
+        type="text"
+        class="w-full mb-4 border border-gray-600 bg-gray-700 text-white p-2 rounded-lg"
+        placeholder="Search tasks"
+        onkeyup="renderTasks()"
+      />
+
+      <!-- Filters -->
+      <div class="flex justify-between mb-4">
+        <button
+          class="filter-btn px-3 py-1 bg-gray-700 rounded-lg hover:bg-gray-600"
+          data-filter="all"
+        >
+          All
+        </button>
+        <button
+          class="filter-btn px-3 py-1 bg-gray-700 rounded-lg hover:bg-gray-600"
+          data-filter="pending"
+        >
+          Pending
+        </button>
+        <button
+          class="filter-btn px-3 py-1 bg-gray-700 rounded-lg hover:bg-gray-600"
+          data-filter="completed"
+        >
+          Completed
+        </button>
+      </div>
+
+      <ul id="taskList" class="space-y-2"></ul>
+    </div>
+
+    <!-- Edit task -->
+    <div
+      id="editModal"
+      class="hidden fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center"
+    >
+      <div
+        class="bg-gray-800 p-6 rounded-xl w-80 shadow-lg transform scale-90 opacity-0 transition-all duration-300"
+        id="editModalBox"
+      >
+        <h2 class="text-xl font-semibold mb-4">Edit Task</h2>
+
+        <input
+          id="editInput"
+          class="w-full border border-gray-600 bg-gray-700 text-white p-2 rounded-lg"
+          type="text"
+        />
+
+        <div class="flex justify-end mt-4 space-x-3">
+          <button
+            onclick="closeEditModal()"
+            class="px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-700"
+          >
+            Cancel
+          </button>
+          <button
+            onclick="saveEdit()"
+            class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
